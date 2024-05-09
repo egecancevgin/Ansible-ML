@@ -1,0 +1,30 @@
+---
+- name: TensorFlow, Keras ve PyTorch kütüphanelerini yükle
+  hosts: localhost
+  become: true
+  vars:
+    python_version: "3.8.0"        
+    tensorflow_version: "2.15.1"
+    torch_version: "2.2.2"  
+
+  tasks:
+    - name: TensorFlow'u yükleyin
+      pip:
+        name: tensorflow
+        version: "{{ tensorflow_version }}"
+
+
+    - name: PyTorch'u yükleyin
+      pip:
+        name: torch
+        version: "{{ torch_version }}"
+
+
+    - name: tf-keras'ı yükleyin
+      pip:
+        name: tf-keras
+
+  handlers:
+    - name: Hata durumunda başarısız ol
+      fail:
+        msg: "Görev {{ task.name }} başarısız oldu!"

@@ -1,0 +1,11 @@
+# inventory.yml
+
+# Top-level group
+all:
+  children:
+    ml_servers: # Playbook'unuzda tanımladığınız grup
+
+# ml_servers group
+ml_servers:
+  hosts:
+    - localhost
